@@ -3,11 +3,13 @@ import { Button, Item } from '../../components'
 import { getPosts, getPostsLimit } from '../../store/actions/post'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
+import moment from 'moment'
 
 const List = ({ categoryCode }) => {
     const dispatch = useDispatch()
     const [searchParams] = useSearchParams()
     const { posts } = useSelector(state => state.post)
+    const currentDate = moment(new Date).format('hh:mm/ddd/DD/MM/YYYY')
 
     useEffect(() => {
         let params = []
@@ -29,7 +31,7 @@ const List = ({ categoryCode }) => {
         <div className='w-full p-2 bg-white shadow-md rounded-md px-6'>
             <div className='flex items-center justify-between my-3'>
                 <h4 className='text-xl font-semibold'>Danh sách tin đăng</h4>
-                <span>Cập nhật: 07:14 28/07/2023</span>
+                <span>Cập nhật: {currentDate.toString()}</span>
             </div>
             <div className='flex items-center gap-2 my-2'>
                 <span>Sắp xếp:</span>
@@ -44,13 +46,14 @@ const List = ({ categoryCode }) => {
                             address={item?.address}
                             attributes={item?.attributes}
                             description={JSON.parse(item?.description)}
-                            images={JSON.parse(item?.images?.image)}
+                            images= {JSON.parse(item?.images?.image)} 
                             star={+item?.star}
                             title={item?.title}
                             user={item?.user}
                             id={item?.id}
                         />
                     )
+                    
                 })}
             </div>
         </div>

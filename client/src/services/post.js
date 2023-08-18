@@ -43,7 +43,34 @@ export const apiUploadImages = (images) => new Promise(async (resolve, reject) =
         const response = await axios({
             method: 'post',
             url: `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload/`,
-            data: images,
+            data: images
+        })
+        resolve(response)
+
+    } catch (error) {
+        reject(error)
+    }
+})
+export const apiCreatePost = (payload) => new Promise(async (resolve, reject) => {
+    try {
+        const response = await axiosConfig({
+            method: 'post',
+            url: `/api/v1/post/create-new`,
+            data: payload
+        })
+        resolve(response)
+
+    } catch (error) {
+        reject(error)
+    }
+})
+
+export const apiGetPostsLimitAdmin = (query) => new Promise(async (resolve, reject) => {
+    try {
+        const response = await axiosConfig({
+            method: 'post',
+            url: `/api/v1/post/limit-admin`,
+            params: query
         })
         resolve(response)
 

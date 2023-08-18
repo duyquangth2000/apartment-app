@@ -16,9 +16,11 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.22",
     "sequelize": "^6.21.3",
+    "sweetalert2": "^11.7.23",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
